@@ -153,3 +153,151 @@ New i18n example added as separate branch at [example/i18n](https://github.com/s
 [tailwind]: https://img.shields.io/badge/Tailwind_CSS-20232A?style=for-the-badge&logo=tailwindcss&logoColor=319795
 [shadcn]: https://img.shields.io/badge/shadcn/ui-20232A?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBjbGFzcz0iaC02IHctNiI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9Im5vbmUiPjwvcmVjdD48bGluZSB4MT0iMjA4IiB5MT0iMTI4IiB4Mj0iMTI4IiB5Mj0iMjA4IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMzIiPjwvbGluZT48bGluZSB4MT0iMTkyIiB5MT0iNDAiIHgyPSI0MCIgeTI9IjE5MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMyIj48L2xpbmU+PC9zdmc+&logoColor=ffffff
 [sanity]: https://img.shields.io/badge/Sanity-20232A?style=for-the-badge&logo=sanity&logoColor=F97316
+
+# Fleur's Stem
+
+A Next.js website with Sanity CMS integration, featuring a premium dark theme with gold/bronze accents.
+
+![Fleur's Stem](https://cdn.sanity.io/images/a03xrv11/production/e83fee6a672a9df53548878eccddc0f962d1cac8-1920x931.webp)
+
+[![Next.js][next-js]][next-js-url] [![Sanity][sanity]][sanity-url] [![React][react]][react-url] [![Typescript][typescript]][typescript-url] [![Tailwind][tailwind]][tailwind-url] [![Shadcn][shadcn]][shadcn-url]
+
+## Project Structure
+
+This is a monorepo containing:
+- **Frontend**: Next.js application (root directory)
+- **Sanity Studio**: CMS for content management (`sanity/` directory)
+
+## Features
+
+- 🌙 Dark/Light theme switcher
+- 🎨 Premium design with gold/bronze accents
+- 📱 Responsive design
+- 🎯 SEO optimized
+- 📝 Content management with Sanity
+- 🚀 Fast performance with Next.js 15
+
+## Getting Started
+
+### Development
+
+#### Frontend (Next.js)
+```bash
+pnpm dev
+```
+
+#### Sanity Studio
+```bash
+pnpm studio:dev
+```
+
+### Adding content with Sanity
+
+#### 1. Import Sample Data (Optional)
+
+Import the demo dataset to get started with sample content:
+
+```bash
+npx sanity dataset import sample-data.tar.gz production --replace
+```
+
+#### 2. Publish your first document
+
+The template comes pre-defined with a schema containing `Author`, `Category`, `FAQ`, `Page`, `Post`, and `Testimonial` document types.
+
+From the Studio, click "+ Create" and select the `Page` document type. Go ahead and create and publish the document.
+
+Your content should now appear in your Next.js app ([http://localhost:3000](http://localhost:3000))
+
+## Deployment on Vercel
+
+This project is configured for monorepo deployment on Vercel with two separate projects:
+
+### 1. Frontend Deployment
+- **Repository**: This repository
+- **Root Directory**: `/` (root)
+- **Build Command**: `pnpm build`
+- **Output Directory**: `.next`
+- **Framework**: Next.js
+
+### 2. Sanity Studio Deployment
+- **Repository**: This repository
+- **Root Directory**: `/sanity-studio`
+- **Build Command**: `pnpm run build`
+- **Output Directory**: `dist`
+- **Framework**: Static Site
+
+### Setup Instructions
+
+1. **Create two Vercel projects**:
+   - One for your main website
+   - One for your Sanity Studio (e.g., `studio.yoursite.com`)
+
+2. **Configure environment variables** for both projects:
+
+#### Frontend Project
+- `NEXT_PUBLIC_SITE_URL` - your website url (e.g., `https://yoursite.com`)
+- `NEXT_PUBLIC_SITE_ENV` - environment type (`development` or `production`)
+- `NEXT_PUBLIC_SANITY_API_VERSION` - Sanity API version (e.g., `2024-01-01`)
+- `NEXT_PUBLIC_SANITY_PROJECT_ID` - your Sanity project ID
+- `NEXT_PUBLIC_SANITY_DATASET` - your Sanity dataset name
+- `SANITY_API_READ_TOKEN` - your Sanity read token
+
+#### Studio Project
+- `SANITY_PROJECT_ID` - your Sanity project ID
+- `SANITY_DATASET` - your Sanity dataset name
+- `SANITY_API_TOKEN` - your Sanity API token
+
+3. **Configure CORS settings** in your Sanity project to allow both domains
+
+4. **Deploy both projects**
+
+## Environment Variables
+
+All environment variables and their descriptions:
+
+- `NEXT_PUBLIC_SITE_URL` - your website url. For example, `https://yourwebsite.com` without trailing slash.
+- `NEXT_PUBLIC_SITE_ENV` - specifies the environment type (development/production) and affects metadata configuration. Setting this to "development" prevents search engine indexing, which is useful for staging environments (e.g., `dev.yourwebsite.com`).
+- `NEXT_PUBLIC_SANITY_API_VERSION` - your Sanity API version. You don't have to use specific dates, any past or present date is valid, and today's date will always give you the latest version - no need to check release history. For example: YYYY-MM-DD.
+- `NEXT_PUBLIC_SANITY_PROJECT_ID` - your Sanity project ID. For example, abc12345.
+- `NEXT_PUBLIC_SANITY_DATASET` - your Sanity dataset name. For example, production.
+- `SANITY_API_READ_TOKEN` - your Sanity read token for Next.js to fetch data.
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS
+- **CMS**: Sanity
+- **Deployment**: Vercel
+- **Package Manager**: pnpm
+
+## Sanity TypeGen
+
+To generate the types, run the following command:
+
+```bash
+npx sanity schema extract
+```
+
+This will generate `schema.json` file in the root of the project.
+
+To generate the types, run the following command:
+
+```bash
+npx sanity typegen generate
+```
+
+This will generate the types in the `sanity.types.ts` file in the root of the project.
+
+[react-url]: https://reactjs.org/
+[next-js-url]: https://nextjs.org/
+[typescript-url]: https://www.typescriptlang.org/
+[tailwind-url]: https://tailwindcss.com/
+[shadcn-url]: https://ui.shadcn.com/
+[sanity-url]: https://www.sanity.io/
+[react]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[next-js]: https://img.shields.io/badge/Next.js-20232A?style=for-the-badge&logo=Next.js
+[typescript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
+[tailwind]: https://img.shields.io/badge/Tailwind_CSS-20232A?style=for-the-badge&logo=tailwindcss&logoColor=319795
+[shadcn]: https://img.shields.io/badge/shadcn/ui-20232A?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiBjbGFzcz0iaC02IHctNiI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9Im5vbmUiPjwvcmVjdD48bGluZSB4MT0iMjA4IiB5MT0iMTI4IiB4Mj0iMTI4IiB5Mj0iMjA4IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMzIiPjwvbGluZT48bGluZSB4MT0iMTkyIiB5MT0iNDAiIHgyPSI0MCIgeTI9IjE5MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMyIj48L2xpbmU+PC9zdmc+&logoColor=ffffff
+[sanity]: https://img.shields.io/badge/Sanity-20232A?style=for-the-badge&logo=sanity&logoColor=F97316
