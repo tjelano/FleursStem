@@ -34,7 +34,9 @@ export default function Cta1({
         )}
       >
         <div
-          className={cn(color === "primary" ? "text-background" : undefined)}
+          className={cn(
+            color === "primary" ? "text-background" : "text-foreground"
+          )}
         >
           {tagLine && (
             <h1 className="leading-[0] mb-4">

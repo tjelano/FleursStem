@@ -35,12 +35,12 @@ export default function SectionHeader({
         >
           {tagLine && (
             <h1 className="leading-[0] mb-4">
-              <span className="text-base font-semibold">{tagLine}</span>
+              <span className="text-xs font-medium bg-transparent text-[#bfa76a] px-3 py-1 rounded-xl border border-[#bfa76a] border-[1px] opacity-80 tracking-wide">{tagLine}</span>
             </h1>
           )}
-          <h2 className="text-3xl md:text-5xl mb-4">{title}</h2>
+          <h2 className="text-3xl md:text-5xl mb-4 text-foreground">{title}</h2>
         </div>
-        <p>{description}</p>
+        <p className="text-foreground">{description}</p>
       </div>
     </SectionContainer>
   );

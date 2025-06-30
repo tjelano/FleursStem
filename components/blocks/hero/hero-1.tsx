@@ -19,21 +19,29 @@ export default function Hero1({
   links,
 }: Hero1Props) {
   return (
-    <div className="container dark:bg-background py-20 lg:pt-40">
+    <div className="max-w-7xl mx-auto px-8 py-20 lg:pt-40">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div className="flex flex-col justify-center">
           {tagLine && (
             <h1 className="leading-[0] font-sans animate-fade-up [animation-delay:100ms] opacity-0">
-              <span className="text-base font-semibold">{tagLine}</span>
+              <span className="text-xs font-medium bg-transparent text-accent px-3 py-1 rounded-xl border border-accent border-[1px] opacity-80 tracking-wide">
+                {tagLine}
+              </span>
             </h1>
           )}
           {title && (
-            <h2 className="mt-6 font-bold leading-[1.1] text-4xl md:text-5xl lg:text-6xl animate-fade-up [animation-delay:200ms] opacity-0">
-              {title}
+            <h2 className="mt-6 font-bold leading-[1.1] text-4xl md:text-5xl lg:text-6xl animate-fade-up [animation-delay:200ms] opacity-0 text-foreground">
+              {title.split(' ').map((word, i, arr) =>
+                i === arr.length - 1 ? (
+                  <span key={i} className="text-accent"> {word}</span>
+                ) : (
+                  ' ' + word
+                )
+              )}
             </h2>
           )}
           {body && (
-            <div className="text-lg mt-6 animate-fade-up [animation-delay:300ms] opacity-0">
+            <div className="text-lg mt-6 animate-fade-up [animation-delay:300ms] opacity-0 text-foreground">
               <PortableTextRenderer value={body} />
             </div>
           )}
@@ -57,10 +65,10 @@ export default function Hero1({
             </div>
           )}
         </div>
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-start relative overflow-visible">
           {image && image.asset?._id && (
             <Image
-              className="rounded-xl animate-fade-up [animation-delay:500ms] opacity-0"
+              className="relative z-10 rounded-xl animate-fade-up [animation-delay:500ms] opacity-0 object-cover max-h-[600px] w-full"
               src={urlFor(image).url()}
               alt={image.alt || ""}
               width={image.asset?.metadata?.dimensions?.width || 800}

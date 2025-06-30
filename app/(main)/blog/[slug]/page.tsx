@@ -8,6 +8,10 @@ import {
   fetchSanityPostsStaticParams,
 } from "@/sanity/lib/fetch";
 import { generatePageMetadata } from "@/sanity/lib/metadata";
+import { Button } from "@/components/ui/button";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import DonationForm from "@/components/DonationForm";
 
 export async function generateStaticParams() {
   const posts = await fetchSanityPostsStaticParams();
@@ -65,6 +69,7 @@ export default async function PostPage(props: {
           <PostHero {...post} />
           {post.body && <PortableTextRenderer value={post.body} />}
         </article>
+        <DonationForm />
       </div>
     </section>
   );

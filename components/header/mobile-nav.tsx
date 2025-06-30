@@ -13,9 +13,11 @@ import { NavItem } from "@/types";
 import Logo from "@/components/logo";
 import { useState } from "react";
 import { AlignRight } from "lucide-react";
+import { ModeToggle } from "@/components/menu-toggle";
 
 export default function MobileNav({ navItems }: { navItems: NavItem[] }) {
   const [open, setOpen] = useState(false);
+  const activePath = "/";
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -41,21 +43,40 @@ export default function MobileNav({ navItems }: { navItems: NavItem[] }) {
           <div className="container">
             <ul className="list-none text-center space-y-3">
               <>
-                {navItems.map((navItem) => (
-                  <li key={navItem.label}>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href={navItem.href}
-                      target={navItem.target ? "_blank" : undefined}
-                      rel={navItem.target ? "noopener noreferrer" : undefined}
-                      className="hover:text-decoration-none hover:opacity-50 text-lg"
-                    >
-                      {navItem.label}
-                    </Link>
-                  </li>
-                ))}
+                {navItems.map((navItem) => {
+                  const isActive = navItem.href === activePath;
+                  return (
+                    <li key={navItem.label}>
+                      <Link
+                        onClick={() => setOpen(false)}
+                        href={navItem.href}
+                        target={navItem.target ? "_blank" : undefined}
+                        rel={navItem.target ? "noopener noreferrer" : undefined}
+                        className={`text-lg px-2 py-1 font-medium transition-colors ${
+                          isActive
+                            ? "text-accent border-b-2 border-accent"
+                            : "text-foreground/80 hover:text-accent hover:border-b-2 hover:border-accent"
+                        }`}
+                      >
+                        {navItem.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </>
+              <li className="pt-4">
+                <Link
+                  href="/donate"
+                  onClick={() => setOpen(false)}
+                  className="text-lg px-2 py-1 font-medium transition-colors text-foreground/80 hover:text-accent hover:border-b-2 hover:border-accent"
+                >
+                  Doneer
+                </Link>
+              </li>
             </ul>
+            <div className="flex justify-center mt-8">
+              <ModeToggle />
+            </div>
           </div>
         </div>
       </SheetContent>

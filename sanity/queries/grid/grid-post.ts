@@ -22,6 +22,8 @@ export const gridPostQuery = groq`
             }
           }
         },
+        crop,
+        hotspot,
         alt
       },
       categories[]->{

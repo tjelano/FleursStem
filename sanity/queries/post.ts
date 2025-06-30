@@ -92,6 +92,8 @@ export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)] | order(_cre
           }
         }
       },
+      crop,
+      hotspot,
       alt
     },
 }`;

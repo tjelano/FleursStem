@@ -29,7 +29,7 @@ export default function PricingCard({
       key={title}
       className="flex w-full rounded-3xl ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group"
     >
-      <div className="flex w-full flex-col justify-between border rounded-3xl p-8">
+      <div className="flex w-full flex-col justify-between border border-[#bfa76a] rounded-3xl p-8 bg-card text-card-foreground">
         <div
           className={cn(color === "primary" ? "text-background" : undefined)}
         >
