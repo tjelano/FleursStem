@@ -13,6 +13,13 @@ export const projectId = assertValue(
 
 export const useCdn = false;
 
+// CORS configuration
+export const corsOrigins = process.env.SANITY_CORS_ORIGINS 
+  ? process.env.SANITY_CORS_ORIGINS.split(',') 
+  : ['http://localhost:3000', 'http://localhost:3001'];
+
+export const token = process.env.SANITY_API_TOKEN;
+
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
   if (v === undefined) {
     throw new Error(errorMessage);

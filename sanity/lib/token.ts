@@ -1,7 +1,20 @@
 import "server-only";
+import { token } from "../env";
 
-export const token = process.env.SANITY_API_READ_TOKEN;
+export function getSanityToken(): string | undefined {
+  return token;
+}
 
-if (!token) {
-  throw new Error("Missing SANITY_API_READ_TOKEN");
+export function createAuthenticatedClient() {
+  const { createClient } = require("next-sanity");
+  const { apiVersion, dataset, projectId } = require("../env");
+  
+  return createClient({
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: false,
+    token: token,
+    perspective: "published",
+  });
 }
