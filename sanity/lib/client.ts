@@ -9,7 +9,7 @@ export const client = createClient({
   useCdn,
   perspective: "published",
   stega: {
-    studioUrl: process.env.NEXT_PUBLIC_SITE_URL + "/studio",
+    studioUrl: (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000") + "/studio",
   },
   token: token,
 });

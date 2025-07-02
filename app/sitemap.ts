@@ -18,7 +18,7 @@ async function getPagesSitemap(): Promise<MetadataRoute.Sitemap[]> {
   const { data } = await sanityFetch({
     query: pagesQuery,
     params: {
-      baseUrl: process.env.NEXT_PUBLIC_SITE_URL,
+      baseUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
     },
   });
 
@@ -38,7 +38,7 @@ async function getPostsSitemap(): Promise<MetadataRoute.Sitemap[]> {
   const { data } = await sanityFetch({
     query: postsQuery,
     params: {
-      baseUrl: process.env.NEXT_PUBLIC_SITE_URL,
+      baseUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
     },
   });
 
