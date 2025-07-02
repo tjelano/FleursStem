@@ -16,6 +16,8 @@ import { resolve } from "../sanity/presentation/resolve";
 import { structure } from "../sanity/structure";
 import { codeInput } from "@sanity/code-input";
 
+console.log("Vercel build: TEST_VAR =", process.env.TEST_VAR);
+
 export default defineConfig({
   title: "Fleur's Stem Studio",
   projectId,
