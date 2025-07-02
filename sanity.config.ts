@@ -20,7 +20,7 @@ export default defineConfig({
   basePath: "/studio",
   title: "Fleur's Stem",
   projectId,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  dataset,
   // Add and edit the content schema in the './sanity/schema' folder
   schema,
   plugins: [
