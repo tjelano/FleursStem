@@ -1,5 +1,5 @@
 import "server-only";
-import { token } from "../env";
+import { token } from "../../../sanity/env";
 
 export function getSanityToken(): string | undefined {
   return token;
