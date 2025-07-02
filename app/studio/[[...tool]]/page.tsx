@@ -9,7 +9,7 @@
 
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../sanity.config'
-import { token } from "../env"
+import { token } from "../../../sanity/env"
 
 export const dynamic = 'force-static'
 
