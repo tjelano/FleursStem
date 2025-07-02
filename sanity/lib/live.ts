@@ -1,6 +1,6 @@
 import { defineLive } from "next-sanity";
 import { client } from "./client";
-import { token } from "../../sanity-studio/env";
+import { token } from "../env";
 
 export const { sanityFetch, SanityLive } = defineLive({
   client,

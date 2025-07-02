@@ -1,6 +1,6 @@
 import createImageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { dataset, projectId } from "../../sanity-studio/env";
+import { dataset, projectId } from "../env";
 
 // https://www.sanity.io/docs/image-url
 const builder = createImageUrlBuilder({ projectId, dataset });
