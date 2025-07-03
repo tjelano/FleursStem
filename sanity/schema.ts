@@ -6,6 +6,7 @@ import author from "./schemas/documents/author";
 import category from "./schemas/documents/category";
 import faq from "./schemas/documents/faq";
 import testimonial from "./schemas/documents/testimonial";
+import galleryDocument from "./schemas/documents/gallery";
 
 // Fleur's Stem shared objects
 import blockContent from "./schemas/blocks/shared/block-content";
@@ -37,6 +38,7 @@ import logoCloud1 from "./schemas/blocks/logo-cloud/logo-cloud-1";
 import faqs from "./schemas/blocks/faqs";
 import newsletter from "./schemas/blocks/forms/newsletter";
 import allPosts from "./schemas/blocks/all-posts";
+import galleryBlock from "./schemas/blocks/gallery";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -47,6 +49,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     category,
     faq,
     testimonial,
+    galleryDocument,
     // shared objects
     blockContent,
     link,
@@ -77,5 +80,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     faqs,
     newsletter,
     allPosts,
+    galleryBlock,
   ],
 };
