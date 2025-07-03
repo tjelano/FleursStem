@@ -20,7 +20,7 @@ export default async function AllPosts({
   return (
     <SectionContainer color={color} padding={padding}>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {posts.map((post) => (
+        {posts.map((post: any) => (
           <Link
             key={post?.slug?.current}
             className="flex w-full rounded-3xl ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

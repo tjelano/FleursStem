@@ -16,7 +16,7 @@ import DonationForm from "@/components/DonationForm";
 export async function generateStaticParams() {
   const posts = await fetchSanityPostsStaticParams();
 
-  return posts.map((post) => ({
+  return posts.map((post: any) => ({
     slug: post.slug?.current,
   }));
 }
