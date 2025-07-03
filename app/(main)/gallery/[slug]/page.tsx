@@ -5,10 +5,6 @@ import { Metadata } from "next";
 import { urlFor } from "@/sanity/lib/image";
 import { cn } from "@/lib/utils";
 
-interface GalleryPageProps {
-  params: { slug: string };
-}
-
 export async function generateStaticParams() {
   const galleries = await client.fetch(GALLERIES_SLUGS_QUERY);
   return galleries.map((gallery: any) => ({
@@ -16,9 +12,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: GalleryPageProps): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const params = await props.params;
   const gallery = await client.fetch(GALLERY_QUERY, { slug: params.slug });
 
   if (!gallery) {
@@ -45,7 +42,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function GalleryPage({ params }: GalleryPageProps) {
+export default async function GalleryPage(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const params = await props.params;
   const gallery = await client.fetch(GALLERY_QUERY, { slug: params.slug });
 
   if (!gallery) {
