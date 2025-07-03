@@ -9,7 +9,7 @@ import { generatePageMetadata } from "@/sanity/lib/metadata";
 export async function generateStaticParams() {
   const pages = await fetchSanityPagesStaticParams();
 
-  return pages.map((page) => ({
+  return pages.map((page: any) => ({
     slug: page.slug?.current,
   }));
 }
