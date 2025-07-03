@@ -12,13 +12,11 @@ import LogoCloud1 from "@/components/blocks/logo-cloud/logo-cloud-1";
 import FAQs from "@/components/blocks/faqs";
 import FormNewsletter from "@/components/blocks/forms/newsletter";
 import AllPosts from "@/components/blocks/all-posts";
-import Gallery from "@/components/blocks/gallery";
+// import Gallery from "@/components/blocks/gallery";
 
 type Block = NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number];
 
-const componentMap: {
-  [K in Block["_type"]]: React.ComponentType<Extract<Block, { _type: K }>>;
-} = {
+const componentMap = {
   "hero-1": Hero1,
   "hero-2": Hero2,
   "section-header": SectionHeader,
@@ -32,7 +30,9 @@ const componentMap: {
   faqs: FAQs,
   "form-newsletter": FormNewsletter,
   "all-posts": AllPosts,
-  gallery: Gallery,
+  // gallery: Gallery,
+} as {
+  [K in Block["_type"]]: React.ComponentType<Extract<Block, { _type: K }>>;
 };
 
 export default function Blocks({ blocks }: { blocks: Block[] }) {
