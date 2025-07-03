@@ -72,7 +72,7 @@ export default function SplitCardsItem({
             isInView ? "text-background" : "text-foreground"
           )}
         >
-          {tags.map((tag) => (
+          {tags.map((tag: any) => (
             <Badge
               key={tag}
               className={cn(

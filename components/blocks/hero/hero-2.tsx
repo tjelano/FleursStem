@@ -37,7 +37,7 @@ export default function Hero2({ tagLine, title, body, links }: Hero2Props) {
             )}
             {links && links.length > 0 && (
               <div className="flex flex-wrap gap-4">
-                {links.map((link) => (
+                {links.map((link: any) => (
                   <Button
                     key={link.title}
                     variant={stegaClean(link?.buttonVariant)}

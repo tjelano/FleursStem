@@ -38,7 +38,7 @@ const componentMap = {
 export default function Blocks({ blocks }: { blocks: Block[] }) {
   return (
     <>
-      {blocks?.map((block) => {
+      {blocks?.map((block: any) => {
         const Component = componentMap[block._type];
         if (!Component) {
           // Fallback for development/debugging of new component types

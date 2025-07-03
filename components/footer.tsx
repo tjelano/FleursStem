@@ -36,7 +36,7 @@ export default function Footer() {
           <Logo />
         </Link>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-7">
-          {navItems.map((navItem) => (
+          {navItems.map((navItem: any) => (
             <Link
               key={navItem.label}
               href={navItem.href}

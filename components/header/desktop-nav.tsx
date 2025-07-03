@@ -5,7 +5,7 @@ export default function DesktopNav({ navItems }: { navItems: NavItem[] }) {
   const activePath = "/";
   return (
     <div className="hidden xl:flex items-center gap-7 text-foreground -mr-4">
-      {navItems.map((navItem) => {
+      {navItems.map((navItem: any) => {
         const isActive = navItem.href === activePath;
         return (
           <Link

@@ -43,7 +43,7 @@ export default function MobileNav({ navItems }: { navItems: NavItem[] }) {
           <div className="container">
             <ul className="list-none text-center space-y-3">
               <>
-                {navItems.map((navItem) => {
+                {navItems.map((navItem: any) => {
                   const isActive = navItem.href === activePath;
                   return (
                     <li key={navItem.label}>

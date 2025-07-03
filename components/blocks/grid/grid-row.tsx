@@ -37,7 +37,7 @@ export default function GridRow({
             `lg:${stegaClean(gridColumns)}`
           )}
         >
-          {columns.map((column) => {
+          {columns.map((column: any) => {
             const Component = componentMap[column._type];
             if (!Component) {
               // Fallback for development/debugging of new component types

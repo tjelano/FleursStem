@@ -55,7 +55,7 @@ export default function Carousel1({
       {images && images.length > 0 && (
         <Carousel>
           <CarouselContent>
-            {images.map((image, index) => (
+            {images.map((image: any, index: number) => (
               <CarouselItem
                 key={`${index}-${image.alt}`}
                 className={CAROUSEL_SIZES[stegaSize]}
