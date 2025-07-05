@@ -2,9 +2,9 @@ import { defineField, defineType } from "sanity";
 import { Images } from "lucide-react";
 
 export default defineType({
-  name: "gallery",
+  name: "galleryBlock",
   type: "object",
-  title: "Gallery",
+  title: "Gallery Block",
   icon: Images,
   fields: [
     defineField({
