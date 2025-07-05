@@ -90,23 +90,6 @@ export default defineType({
       },
     }),
     defineField({
-      name: "display",
-      type: "string",
-      title: "Display as",
-      description: "How should we display these images?",
-      group: "content",
-      options: {
-        list: [
-          { title: "Grid", value: "grid" },
-          { title: "Masonry", value: "masonry" },
-          { title: "Carousel", value: "carousel" },
-          { title: "Lightbox", value: "lightbox" },
-        ],
-        layout: "radio",
-      },
-      initialValue: "grid",
-    }),
-    defineField({
       name: "columns",
       type: "string",
       title: "Grid Columns",

@@ -4,7 +4,6 @@ import { GALLERY_QUERY, GALLERIES_SLUGS_QUERY } from "@/sanity/queries/gallery-d
 import { Metadata } from "next";
 import { urlFor } from "@/sanity/lib/image";
 import { cn } from "@/lib/utils";
-import GalleryDisplay from "@/components/blocks/GalleryDisplay";
 
 export async function generateStaticParams() {
   const galleries = await client.fetch(GALLERIES_SLUGS_QUERY);
@@ -53,7 +52,7 @@ export default async function GalleryPage(props: {
     notFound();
   }
 
-  const renderImages = (forLightbox = false) => {
+  const renderImages = () => {
     if (!gallery.images || gallery.images.length === 0) {
       return <p className="text-center text-muted-foreground">No images found.</p>;
     }
@@ -70,10 +69,9 @@ export default async function GalleryPage(props: {
         <div
           key={image._key || index}
           className={cn(
-            "relative overflow-hidden rounded-lg mb-4",
+            "relative overflow-hidden rounded-lg",
             gallery.zoom && "cursor-zoom-in transition-transform hover:scale-105"
           )}
-          style={{ breakInside: "avoid" }}
         >
           <img
             src={imageUrl}
@@ -88,67 +86,6 @@ export default async function GalleryPage(props: {
         </div>
       );
     });
-  };
-
-  const renderGallery = () => {
-    switch (gallery.display) {
-      case "grid":
-        return (
-          <div className={cn(
-            "grid gap-4",
-            gallery.columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          )}>
-            {renderImages()}
-          </div>
-        );
-      case "masonry":
-        return (
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
-            {renderImages()}
-          </div>
-        );
-      case "carousel":
-        return (
-          <div className="flex gap-4 overflow-x-auto pb-4">
-            {renderImages()}
-          </div>
-        );
-      case "lightbox":
-        return (
-          <>
-            <div className={cn(
-              "grid gap-4",
-              gallery.columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-            )}>
-              {renderImages()}
-            </div>
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
-              <img
-                src={urlFor(gallery.images[0])
-                  .width(1200)
-                  .height(900)
-                  .url()}
-                alt={gallery.images[0]?.alt || ""}
-                className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg"
-              />
-              <button
-                className="absolute top-4 right-4 text-white text-3xl font-bold"
-              >
-                &times;
-              </button>
-            </div>
-          </>
-        );
-      default:
-        return (
-          <div className={cn(
-            "grid gap-4",
-            gallery.columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          )}>
-            {renderImages()}
-          </div>
-        );
-    }
   };
 
   return (
@@ -172,7 +109,14 @@ export default async function GalleryPage(props: {
         </div>
 
         {/* Gallery */}
-        <GalleryDisplay gallery={gallery} />
+        <div className="gallery-container">
+          <div className={cn(
+            "grid gap-4",
+            gallery.columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          )}>
+            {renderImages()}
+          </div>
+        </div>
       </div>
     </div>
   );
