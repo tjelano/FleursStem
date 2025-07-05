@@ -1,5 +1,6 @@
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { Files, BookA, User, ListCollapse, Quote } from "lucide-react";
+import S from '@sanity/desk-tool/structure-builder'
 
 export const structure = (S: any, context: any) =>
   S.list()
@@ -48,4 +49,5 @@ export const structure = (S: any, context: any) =>
         S,
         context,
       }),
+      S.documentTypeListItem('gallery').title('Gallery'),
     ]);
