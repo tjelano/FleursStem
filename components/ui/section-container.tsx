@@ -1,9 +1,8 @@
 import { cn } from "@/lib/utils";
-import { SectionPadding, ColorVariant } from "@/sanity.types";
 
 interface SectionContainerProps {
-  color?: ColorVariant | null;
-  padding?: SectionPadding | null;
+  color?: any | null;
+  padding?: any | null;
   children: React.ReactNode;
   className?: string;
 }

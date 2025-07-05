@@ -31,7 +31,7 @@ export default function Hero1({
           )}
           {title && (
             <h2 className="mt-6 font-bold leading-[1.1] text-4xl md:text-5xl lg:text-6xl animate-fade-up [animation-delay:200ms] opacity-0 text-foreground">
-              {title.split(' ').map((word, i, arr) =>
+              {title.split(' ').map((word: string, i: number, arr: string[]) =>
                 i === arr.length - 1 ? (
                   <span key={i} className="text-accent"> {word}</span>
                 ) : (

@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils";
 import PortableTextRenderer from "@/components/portable-text-renderer";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { PAGE_QUERYResult, ColorVariant } from "@/sanity.types";
+import { PAGE_QUERYResult } from "@/sanity.types";
 
 type Block = NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number];
 type TimelineRow = Extract<Block, { _type: "timeline-row" }>;
 type Timeline1 = NonNullable<NonNullable<TimelineRow["timelines"]>>[number];
 
 interface Timeline1Props extends Timeline1 {
-  color?: ColorVariant;
+  color?: any;
 }
 
 export default function Timeline1({

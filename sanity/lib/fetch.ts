@@ -7,10 +7,7 @@ import {
 } from "@/sanity/queries/post";
 import {
   PAGE_QUERYResult,
-  PAGES_SLUGS_QUERYResult,
   POST_QUERYResult,
-  POSTS_QUERYResult,
-  POSTS_SLUGS_QUERYResult,
 } from "@/sanity.types";
 
 export const fetchSanityPageBySlug = async ({
@@ -27,7 +24,7 @@ export const fetchSanityPageBySlug = async ({
 };
 
 export const fetchSanityPagesStaticParams =
-  async (): Promise<PAGES_SLUGS_QUERYResult> => {
+  async (): Promise<any> => {
     const { data } = await sanityFetch({
       query: PAGES_SLUGS_QUERY,
       perspective: "published",
@@ -37,7 +34,7 @@ export const fetchSanityPagesStaticParams =
     return data;
   };
 
-export const fetchSanityPosts = async (): Promise<POSTS_QUERYResult> => {
+export const fetchSanityPosts = async (): Promise<any> => {
   const { data } = await sanityFetch({
     query: POSTS_QUERY,
   });
@@ -59,7 +56,7 @@ export const fetchSanityPostBySlug = async ({
 };
 
 export const fetchSanityPostsStaticParams =
-  async (): Promise<POSTS_SLUGS_QUERYResult> => {
+  async (): Promise<any> => {
     const { data } = await sanityFetch({
       query: POSTS_SLUGS_QUERY,
       perspective: "published",

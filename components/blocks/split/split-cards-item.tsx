@@ -3,7 +3,7 @@ import PortableTextRenderer from "@/components/portable-text-renderer";
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { PAGE_QUERYResult, ColorVariant } from "@/sanity.types";
+import { PAGE_QUERYResult } from "@/sanity.types";
 
 type Block = NonNullable<NonNullable<PAGE_QUERYResult>["blocks"]>[number];
 type SplitRow = Extract<Block, { _type: "split-row" }>;
@@ -14,7 +14,7 @@ type SplitCardsList = Extract<
 type SplitCardItem = NonNullable<NonNullable<SplitCardsList["list"]>[number]>;
 
 interface SplitCardsItemProps extends SplitCardItem {
-  color?: ColorVariant;
+  color?: any;
 }
 
 export default function SplitCardsItem({
