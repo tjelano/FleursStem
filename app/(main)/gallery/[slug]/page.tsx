@@ -88,6 +88,41 @@ export default async function GalleryPage(props: {
     });
   };
 
+  const renderGallery = () => {
+    switch (gallery.display) {
+      case "stacked":
+        return (
+          <div className="space-y-4">
+            {renderImages()}
+          </div>
+        );
+      
+      case "inline":
+        return (
+          <div className="flex flex-wrap gap-4">
+            {renderImages()}
+          </div>
+        );
+      
+      case "carousel":
+        return (
+          <div className="flex gap-4 overflow-x-auto pb-4">
+            {renderImages()}
+          </div>
+        );
+      
+      default:
+        return (
+          <div className={cn(
+            "grid gap-4",
+            gallery.columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          )}>
+            {renderImages()}
+          </div>
+        );
+    }
+  };
+
   return (
     <div className="my-16 px-4">
       <div className="mx-auto max-w-7xl">
@@ -110,12 +145,7 @@ export default async function GalleryPage(props: {
 
         {/* Gallery */}
         <div className="gallery-container">
-          <div className={cn(
-            "grid gap-4",
-            gallery.columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          )}>
-            {renderImages()}
-          </div>
+          {renderGallery()}
         </div>
       </div>
     </div>

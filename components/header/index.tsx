@@ -17,6 +17,11 @@ const navItems = [
     target: false,
   },
   {
+    label: "Fotos",
+    href: "/gallery",
+    target: false,
+  },
+  {
     label: "Over mij",
     href: "/over-mij",
     target: false,
