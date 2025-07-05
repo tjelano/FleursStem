@@ -4,6 +4,9 @@ import { GALLERY_QUERY, GALLERIES_SLUGS_QUERY } from "@/sanity/queries/gallery-d
 import { Metadata } from "next";
 import { urlFor } from "@/sanity/lib/image";
 import { cn } from "@/lib/utils";
+import GalleryImageGrid from "@/components/blocks/gallery-image-grid";
+
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   const galleries = await client.fetch(GALLERIES_SLUGS_QUERY);
@@ -12,11 +15,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
-  const gallery = await client.fetch(GALLERY_QUERY, { slug: params.slug });
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const gallery = await client.fetch(GALLERY_QUERY, { slug });
 
   if (!gallery) {
     return {
@@ -42,86 +43,13 @@ export async function generateMetadata(props: {
   };
 }
 
-export default async function GalleryPage(props: {
-  params: Promise<{ slug: string }>;
-}) {
-  const params = await props.params;
-  const gallery = await client.fetch(GALLERY_QUERY, { slug: params.slug });
+export default async function GalleryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const gallery = await client.fetch(GALLERY_QUERY, { slug });
 
   if (!gallery) {
     notFound();
   }
-
-  const renderImages = () => {
-    if (!gallery.images || gallery.images.length === 0) {
-      return <p className="text-center text-muted-foreground">No images found.</p>;
-    }
-
-    return gallery.images.map((image: any, index: number) => {
-      if (!image || !image.asset) return null;
-
-      const imageUrl = urlFor(image)
-        .width(800)
-        .height(600)
-        .url();
-
-      return (
-        <div
-          key={image._key || index}
-          className={cn(
-            "relative overflow-hidden rounded-lg",
-            gallery.zoom && "cursor-zoom-in transition-transform hover:scale-105"
-          )}
-        >
-          <img
-            src={imageUrl}
-            alt={image.alt || ""}
-            className="h-full w-full object-cover"
-          />
-          {image.caption && (
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
-              {image.caption}
-            </div>
-          )}
-        </div>
-      );
-    });
-  };
-
-  const renderGallery = () => {
-    switch (gallery.display) {
-      case "stacked":
-        return (
-          <div className="space-y-4">
-            {renderImages()}
-          </div>
-        );
-      
-      case "inline":
-        return (
-          <div className="flex flex-wrap gap-4">
-            {renderImages()}
-          </div>
-        );
-      
-      case "carousel":
-        return (
-          <div className="flex gap-4 overflow-x-auto pb-4">
-            {renderImages()}
-          </div>
-        );
-      
-      default:
-        return (
-          <div className={cn(
-            "grid gap-4",
-            gallery.columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          )}>
-            {renderImages()}
-          </div>
-        );
-    }
-  };
 
   return (
     <div className="my-16 px-4">
@@ -145,7 +73,12 @@ export default async function GalleryPage(props: {
 
         {/* Gallery */}
         <div className="gallery-container">
-          {renderGallery()}
+          <GalleryImageGrid
+            images={gallery.images}
+            zoom={gallery.zoom}
+            display={gallery.display}
+            columns={gallery.columns}
+          />
         </div>
       </div>
     </div>
