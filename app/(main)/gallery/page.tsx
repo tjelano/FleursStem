@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { client } from "@/sanity/lib/client";
 import { GALLERIES_QUERY } from "@/sanity/queries/gallery-document";
 import { urlFor } from "@/sanity/lib/image";
