@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer>
+    <footer className="mt-16">
       <div className="bg-background pb-5 xl:pb-5 text-foreground">
         <Link
           className="block w-[6.25rem] mx-auto"
