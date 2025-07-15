@@ -50,6 +50,20 @@ export const GALLERIES_QUERY = groq`
     slug,
     eyebrow,
     description,
+    coverImage {
+      alt,
+      asset->{
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions {
+            width,
+            height
+          }
+        }
+      }
+    },
     images[]{
       _key,
       alt,

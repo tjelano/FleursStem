@@ -55,6 +55,24 @@ export default defineType({
       group: "content",
     }),
     defineField({
+      name: "coverImage",
+      title: "Cover Image",
+      description: "The main image that will be displayed as the gallery cover/thumbnail",
+      type: "image",
+      group: "content",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alt Text",
+          description: "Alternative text for accessibility and SEO",
+        }),
+      ],
+    }),
+    defineField({
       name: "images",
       type: "array",
       title: "Images",

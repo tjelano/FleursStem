@@ -37,7 +37,18 @@ export default async function GalleriesPage() {
               >
                 <div className="bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   {/* Gallery Preview Image */}
-                  {gallery.images && gallery.images.length > 0 && gallery.images[0] && (
+                  {gallery.coverImage ? (
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={urlFor(gallery.coverImage)
+                          .width(400)
+                          .height(225)
+                          .url()}
+                        alt={gallery.coverImage.alt || gallery.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  ) : gallery.images && gallery.images.length > 0 && gallery.images[0] ? (
                     <div className="aspect-video overflow-hidden">
                       <img
                         src={urlFor(gallery.images[0])
@@ -48,7 +59,7 @@ export default async function GalleriesPage() {
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                  )}
+                  ) : null}
                   
                   {/* Gallery Info */}
                   <div className="p-6">
