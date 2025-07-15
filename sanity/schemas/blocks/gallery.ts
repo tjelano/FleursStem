@@ -41,6 +41,7 @@ export default defineType({
         list: [
           { title: "Stacked on top of eachother", value: "stacked" },
           { title: "In-line", value: "inline" },
+          { title: "Uniform Grid", value: "uniform" },
           { title: "Carousel", value: "carousel" },
         ],
         layout: "radio",

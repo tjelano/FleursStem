@@ -17,7 +17,7 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
     return <p className="text-center text-muted-foreground">No images found.</p>;
   }
 
-  const renderImages = () =>
+  const renderImages = (uniformSizing: boolean = false) =>
     images.map((image: any, index: number) => {
       if (!image || !image.asset) return null;
       
@@ -35,17 +35,21 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
           key={image._key || index}
           className={cn(
             "relative overflow-hidden rounded-lg",
-            zoom && "cursor-zoom-in transition-transform hover:scale-105"
+            zoom && "cursor-zoom-in transition-transform hover:scale-105",
+            uniformSizing && "aspect-square"
           )}
           onClick={() => zoom && setZoomedImage(largeImageUrl)}
           style={{
-            aspectRatio: aspectRatio,
+            aspectRatio: uniformSizing ? undefined : aspectRatio,
           }}
         >
           <img
             src={imageUrl}
             alt={image.alt || ""}
-            className="h-full w-full object-contain"
+            className={cn(
+              "h-full w-full",
+              uniformSizing ? "object-cover" : "object-contain"
+            )}
           />
           {image.caption && (
             <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
@@ -74,9 +78,18 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
         </div>
       );
       break;
+    case "uniform":
+      gridContent = (
+        <div className={cn("grid gap-4", columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}>
+          {renderImages(true)}
+        </div>
+      );
+      break;
     default:
       gridContent = (
-        <div className={cn("grid gap-4", columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}>{renderImages()}</div>
+        <div className={cn("grid gap-4", columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}>
+          {renderImages()}
+        </div>
       );
   }
 

@@ -21,7 +21,7 @@ export default function Gallery({
     return null;
   }
 
-  const renderImages = () => {
+  const renderImages = (uniformSizing: boolean = false) => {
     return cleanImages.map((image: any, index: number) => {
       if (!image || !image.asset) return null;
 
@@ -39,16 +39,20 @@ export default function Gallery({
           key={image._key || index}
           className={cn(
             "relative overflow-hidden rounded-lg",
-            cleanZoom && "cursor-zoom-in transition-transform hover:scale-105"
+            cleanZoom && "cursor-zoom-in transition-transform hover:scale-105",
+            uniformSizing && "aspect-square"
           )}
           style={{
-            aspectRatio: aspectRatio,
+            aspectRatio: uniformSizing ? undefined : aspectRatio,
           }}
         >
           <img
             src={imageUrl}
             alt={image.alt || ""}
-            className="h-full w-full object-contain"
+            className={cn(
+              "h-full w-full",
+              uniformSizing ? "object-cover" : "object-contain"
+            )}
           />
         </div>
       );
@@ -82,6 +86,13 @@ export default function Gallery({
         return (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ gridAutoRows: 'auto' }}>
             {renderImages()}
+          </div>
+        );
+      
+      case "uniform":
+        return (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {renderImages(true)}
           </div>
         );
       

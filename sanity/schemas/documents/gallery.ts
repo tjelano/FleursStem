@@ -98,6 +98,7 @@ export default defineType({
       options: {
         list: [
           { title: "Grid", value: "grid" },
+          { title: "Uniform Grid", value: "uniform" },
           { title: "Masonry", value: "masonry" },
           { title: "Carousel", value: "carousel" },
           { title: "Lightbox", value: "lightbox" },
