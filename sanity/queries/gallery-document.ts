@@ -10,6 +10,8 @@ export const GALLERY_QUERY = groq`
       _key,
       alt,
       caption,
+      hotspot,
+      crop,
       asset->{
         _id,
         url,
@@ -52,6 +54,8 @@ export const GALLERIES_QUERY = groq`
     description,
     coverImage {
       alt,
+      hotspot,
+      crop,
       asset->{
         _id,
         url,
@@ -67,6 +71,8 @@ export const GALLERIES_QUERY = groq`
     images[]{
       _key,
       alt,
+      hotspot,
+      crop,
       asset->{
         _id,
         url,
