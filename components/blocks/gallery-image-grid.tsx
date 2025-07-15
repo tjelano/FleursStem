@@ -164,7 +164,10 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
               {zoomedImageIndex > 0 && (
                 <button
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-opacity-80 transition-all"
-                  onClick={handlePrevious}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrevious();
+                  }}
                   aria-label="Previous image"
                 >
                   ‹
@@ -175,7 +178,10 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
               {zoomedImageIndex < validImages.length - 1 && (
                 <button
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl font-bold bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-opacity-80 transition-all"
-                  onClick={handleNext}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                  }}
                   aria-label="Next image"
                 >
                   ›
@@ -187,7 +193,10 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
           {/* Close button */}
           <button
             className="absolute top-8 end-8 text-white text-3xl font-bold bg-black bg-opacity-50 rounded-full px-3 py-1 hover:bg-opacity-80"
-            onClick={handleClose}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClose();
+            }}
             aria-label="Close zoomed image"
           >
             ×
