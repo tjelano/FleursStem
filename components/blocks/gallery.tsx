@@ -21,7 +21,7 @@ export default function Gallery({
     return null;
   }
 
-  const renderImages = (uniformSizing: boolean = false) => {
+  const renderImages = (uniformSizing: boolean = true) => {
     return cleanImages.map((image: any, index: number) => {
       if (!image || !image.asset) return null;
 
@@ -64,28 +64,28 @@ export default function Gallery({
       case "stacked":
         return (
           <div className="space-y-4">
-            {renderImages()}
+            {renderImages(false)}
           </div>
         );
       
       case "inline":
         return (
           <div className="flex flex-wrap gap-4">
-            {renderImages()}
+            {renderImages(false)}
           </div>
         );
       
       case "carousel":
         return (
           <div className="flex gap-4 overflow-x-auto pb-4">
-            {renderImages()}
+            {renderImages(false)}
           </div>
         );
       
       case "masonry":
         return (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ gridAutoRows: 'auto' }}>
-            {renderImages()}
+            {renderImages(false)}
           </div>
         );
       
@@ -99,7 +99,7 @@ export default function Gallery({
       default:
         return (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {renderImages()}
+            {renderImages(true)}
           </div>
         );
     }

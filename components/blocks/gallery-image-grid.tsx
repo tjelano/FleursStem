@@ -17,7 +17,7 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
     return <p className="text-center text-muted-foreground">No images found.</p>;
   }
 
-  const renderImages = (uniformSizing: boolean = false) =>
+  const renderImages = (uniformSizing: boolean = true) =>
     images.map((image: any, index: number) => {
       if (!image || !image.asset) return null;
       
@@ -63,18 +63,18 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
   let gridContent;
   switch (display) {
     case "stacked":
-      gridContent = <div className="space-y-4">{renderImages()}</div>;
+      gridContent = <div className="space-y-4">{renderImages(false)}</div>;
       break;
     case "inline":
-      gridContent = <div className="flex flex-wrap gap-4">{renderImages()}</div>;
+      gridContent = <div className="flex flex-wrap gap-4">{renderImages(false)}</div>;
       break;
     case "carousel":
-      gridContent = <div className="flex gap-4 overflow-x-auto pb-4">{renderImages()}</div>;
+      gridContent = <div className="flex gap-4 overflow-x-auto pb-4">{renderImages(false)}</div>;
       break;
     case "masonry":
       gridContent = (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ gridAutoRows: 'auto' }}>
-          {renderImages()}
+          {renderImages(false)}
         </div>
       );
       break;
@@ -88,7 +88,7 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
     default:
       gridContent = (
         <div className={cn("grid gap-4", columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}>
-          {renderImages()}
+          {renderImages(true)}
         </div>
       );
   }
