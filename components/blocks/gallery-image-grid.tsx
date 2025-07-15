@@ -20,8 +20,16 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
   const renderImages = () =>
     images.map((image: any, index: number) => {
       if (!image || !image.asset) return null;
-      const imageUrl = urlFor(image).width(800).height(600).url();
-      const largeImageUrl = urlFor(image).width(1600).height(1200).url();
+      
+      // Get original image dimensions for proper aspect ratio
+      const originalWidth = image.asset.metadata?.dimensions?.width || 800;
+      const originalHeight = image.asset.metadata?.dimensions?.height || 600;
+      const aspectRatio = originalWidth / originalHeight;
+      
+      // Generate URLs without forcing aspect ratio
+      const imageUrl = urlFor(image).width(800).url();
+      const largeImageUrl = urlFor(image).width(1600).url();
+      
       return (
         <div
           key={image._key || index}
@@ -30,11 +38,14 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
             zoom && "cursor-zoom-in transition-transform hover:scale-105"
           )}
           onClick={() => zoom && setZoomedImage(largeImageUrl)}
+          style={{
+            aspectRatio: aspectRatio,
+          }}
         >
           <img
             src={imageUrl}
             alt={image.alt || ""}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
           />
           {image.caption && (
             <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
@@ -56,6 +67,13 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
     case "carousel":
       gridContent = <div className="flex gap-4 overflow-x-auto pb-4">{renderImages()}</div>;
       break;
+    case "masonry":
+      gridContent = (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ gridAutoRows: 'auto' }}>
+          {renderImages()}
+        </div>
+      );
+      break;
     default:
       gridContent = (
         <div className={cn("grid gap-4", columns || "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3")}>{renderImages()}</div>
@@ -73,7 +91,7 @@ export default function GalleryImageGrid({ images, zoom, display, columns }: Gal
           <img
             src={zoomedImage}
             alt="Zoomed"
-            className="max-w-3xl max-h-[80vh] rounded-lg shadow-lg border-4 border-white"
+            className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-lg border-4 border-white"
             onClick={e => e.stopPropagation()}
           />
           <button

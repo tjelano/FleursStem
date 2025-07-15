@@ -25,9 +25,13 @@ export default function Gallery({
     return cleanImages.map((image: any, index: number) => {
       if (!image || !image.asset) return null;
 
+      // Get original image dimensions for proper aspect ratio
+      const originalWidth = image.asset.metadata?.dimensions?.width || 800;
+      const originalHeight = image.asset.metadata?.dimensions?.height || 600;
+      const aspectRatio = originalWidth / originalHeight;
+
       const imageUrl = urlFor(image)
         .width(800)
-        .height(600)
         .url();
 
       return (
@@ -37,11 +41,14 @@ export default function Gallery({
             "relative overflow-hidden rounded-lg",
             cleanZoom && "cursor-zoom-in transition-transform hover:scale-105"
           )}
+          style={{
+            aspectRatio: aspectRatio,
+          }}
         >
           <img
             src={imageUrl}
             alt={image.alt || ""}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
           />
         </div>
       );
@@ -67,6 +74,13 @@ export default function Gallery({
       case "carousel":
         return (
           <div className="flex gap-4 overflow-x-auto pb-4">
+            {renderImages()}
+          </div>
+        );
+      
+      case "masonry":
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ gridAutoRows: 'auto' }}>
             {renderImages()}
           </div>
         );
