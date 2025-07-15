@@ -50,7 +50,7 @@ export default function Gallery({
             src={imageUrl}
             alt={image.alt || ""}
             className={cn(
-              "h-full w-full",
+              "h-full w-full object-center",
               uniformSizing ? "object-cover" : "object-contain"
             )}
           />
