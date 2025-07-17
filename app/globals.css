@@ -158,7 +158,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply min-h-screen text-white;
+    @apply min-h-screen text-foreground;
     background: var(--background);
   }
   .dark body {

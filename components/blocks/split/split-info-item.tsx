@@ -38,7 +38,7 @@ export default function SplitCardsItem({
       <div
         className={cn(
           "flex flex-col gap-4 transition-colors duration-1000 ease-in-out",
-          isInView ? "text-background" : "text-foreground"
+          "text-foreground"
         )}
       >
         <div className="flex items-center gap-2">
@@ -69,7 +69,7 @@ export default function SplitCardsItem({
         <div
           className={cn(
             "flex flex-wrap gap-3 mt-4 transition-colors duration-1000 ease-in-out",
-            isInView ? "text-background" : "text-foreground"
+            "text-foreground"
           )}
         >
           {tags.map((tag: any) => (

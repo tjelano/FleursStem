@@ -40,8 +40,7 @@ export default function SplitCardsItem({
         <div
           className={cn(
             "font-bold text-2xl lg:text-3xl transition-colors duration-1000 ease-in-out",
-            isInView ? "text-background" : "text-foreground",
-            color === "primary" ? "text-background" : undefined
+            color === "primary" ? "text-background" : "text-foreground"
           )}
         >
           {tagLine}
@@ -51,8 +50,7 @@ export default function SplitCardsItem({
         <div
           className={cn(
             "my-2 font-semibold text-xl transition-colors duration-1000 ease-in-out",
-            isInView ? "text-background" : "text-foreground",
-            color === "primary" ? "text-background" : undefined
+            color === "primary" ? "text-background" : "text-foreground"
           )}
         >
           {title}
@@ -62,7 +60,7 @@ export default function SplitCardsItem({
         <div
           className={cn(
             "transition-colors duration-1000 ease-in-out",
-            isInView ? "text-background" : "text-foreground"
+            color === "primary" ? "text-background" : "text-foreground"
           )}
         >
           <PortableTextRenderer value={body} />
