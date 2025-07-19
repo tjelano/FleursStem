@@ -56,19 +56,29 @@ export default function Cta1({
             {links &&
               links.length > 0 &&
               links.map((link: any) => (
-                <Button
-                  key={link.title}
-                  variant={stegaClean(link?.buttonVariant)}
-                  asChild
-                >
-                  <Link
-                    href={link.href as string}
-                    target={link.target ? "_blank" : undefined}
-                    rel={link.target ? "noopener" : undefined}
+                link.href ? (
+                  <Button
+                    key={link.title}
+                    variant={stegaClean(link?.buttonVariant)}
+                    asChild
+                  >
+                    <Link
+                      href={link.href as string}
+                      target={link.target ? "_blank" : undefined}
+                      rel={link.target ? "noopener" : undefined}
+                    >
+                      {link.title}
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button
+                    key={link.title}
+                    variant={stegaClean(link?.buttonVariant)}
+                    disabled
                   >
                     {link.title}
-                  </Link>
-                </Button>
+                  </Button>
+                )
               ))}
           </div>
         )}

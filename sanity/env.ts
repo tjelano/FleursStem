@@ -1,4 +1,4 @@
-console.log("Vercel build: NEXT_PUBLIC_SANITY_DATASET =", process.env.NEXT_PUBLIC_SANITY_DATASET);
+// console.log("Vercel build: NEXT_PUBLIC_SANITY_DATASET =", process.env.NEXT_PUBLIC_SANITY_DATASET);
 
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-10-31";
