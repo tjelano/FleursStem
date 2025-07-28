@@ -45,7 +45,7 @@ export default function Header() {
           <ModeToggle />
         </div>
         <Button asChild variant="default" className="bg-accent text-accent-foreground border border-accent hover:bg-accent/80 font-medium hidden xl:flex ml-4">
-          <Link href="/donate">Doneer</Link>
+          <a href="https://tikkie.me/pay/ArtistDelfl/e2wehApQq55pVssvhG68Qy" target="_blank" rel="noopener noreferrer">Doneer</a>
         </Button>
         <div className="flex items-center xl:hidden">
           <MobileNav navItems={navItems} />
