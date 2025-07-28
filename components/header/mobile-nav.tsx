@@ -65,14 +65,13 @@ export default function MobileNav({ navItems }: { navItems: NavItem[] }) {
                 })}
               </>
               <li className="pt-4">
-                <a
-                  href="https://tikkie.me/pay/ArtistDelfl/e2wehApQq55pVssvhG68Qy"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/donate"
+                  onClick={() => setOpen(false)}
                   className="text-lg px-2 py-1 font-medium transition-colors text-foreground/80 hover:text-accent hover:border-b-2 hover:border-accent"
                 >
                   Doneer
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="flex justify-center mt-8">
