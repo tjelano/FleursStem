@@ -19,10 +19,10 @@ export default async function GalleriesPage() {
         {/* Header */}
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold tracking-tight mb-4">
-            Image Galleries
+            Fotogalerijen
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore our collection of curated image galleries
+            Ontdek onze collectie zorgvuldig samengestelde fotogalerijen
           </p>
         </div>
 
