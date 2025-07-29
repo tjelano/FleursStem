@@ -21,9 +21,6 @@ export default async function GalleriesPage() {
           <h1 className="text-4xl font-bold tracking-tight mb-4">
             Fotogalerijen
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ontdek onze collectie zorgvuldig samengestelde fotogalerijen
-          </p>
         </div>
 
         {/* Galleries Grid */}
