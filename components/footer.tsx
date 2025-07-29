@@ -70,8 +70,9 @@ export default function Footer() {
             aria-label="Twitter(X)"
             title="Twitter(X)"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.53 2.47a1.75 1.75 0 0 1 2.47 2.47l-5.06 5.06 5.06 5.06a1.75 1.75 0 1 1-2.47 2.47l-5.06-5.06-5.06 5.06a1.75 1.75 0 1 1-2.47-2.47l5.06-5.06-5.06-5.06A1.75 1.75 0 1 1 7.47 2.47l5.06 5.06 5.06-5.06z" fill="currentColor"/>
+            {/* Official X SVG */}
+            <svg width="24" height="24" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1199.97 0H950.684L600.001 494.118L249.316 0H0.0292969L482.684 630.118L0 1227H249.316L600.001 732.882L950.684 1227H1199.97L717.316 630.118L1199.97 0Z" fill="currentColor"/>
             </svg>
           </a>
           <a
