@@ -24,7 +24,7 @@ export default function Hero1({
         <div className="flex flex-col justify-center">
           {tagLine && (
             <h1 className="leading-[0] font-sans animate-fade-up [animation-delay:100ms] opacity-0">
-              <span className="text-xs font-medium bg-transparent text-accent px-3 py-1 rounded-xl border border-accent border-[1px] opacity-80 tracking-wide">
+              <span className="text-[10px] sm:text-xs font-medium bg-transparent text-accent px-2 sm:px-3 py-1 rounded-xl border border-accent border-[1px] opacity-80 tracking-wide break-words max-w-[90vw]">
                 {tagLine}
               </span>
             </h1>
