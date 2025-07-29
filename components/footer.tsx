@@ -9,7 +9,7 @@ const navItems = [
     target: false,
   },
   {
-    label: "Blog",
+    label: "Artikelen",
     href: "/blog",
     target: false,
   },
@@ -29,7 +29,7 @@ export default function Footer() {
     <footer className="mt-16">
       <div className="bg-background pb-5 xl:pb-5 text-foreground">
         <Link
-          className="block w-[6.25rem] mx-auto"
+          className="block mx-auto"
           href="/"
           aria-label="Home page"
         >
