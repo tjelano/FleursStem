@@ -28,13 +28,15 @@ export default function Footer() {
   return (
     <footer className="mt-16">
       <div className="bg-background pb-5 xl:pb-5 text-foreground">
-        <Link
-          className="block mx-auto"
-          href="/"
-          aria-label="Home page"
-        >
-          <Logo />
-        </Link>
+        <div className="flex justify-center w-full mb-8">
+          <Link
+            className="block"
+            href="/"
+            aria-label="Home page"
+          >
+            <Logo />
+          </Link>
+        </div>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-7">
           {navItems.map((navItem: any) => (
             <Link
