@@ -16,10 +16,11 @@ export default function DonatePage() {
             Doneer aan Fleur's Stem
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Jouw donatie helpt mij om mijn missie voort te zetten en meer mensen te bereiken.<br /><br />
-            Donaties worden vrijblijvend gegeven, zonder tegenprestatie, en stellen mij in staat mijn werk onafhankelijk voort te zetten. Ze dragen direct bij aan de dekking van reiskosten, aanschaf van materiaal en de investering in diepgravend onderzoek. Op deze manier steun je niet alleen mijn inzet, maar ook de verhalen en waarheden die verteld móéten worden.<br /><br />
-            En soms… is het ook gewoon een kopje koffie na een lange zitting.
-            Donaties via Tikkie zijn vrijwillig en zonder tegenprestatie. Misbruik (zoals pesterijen of laster via betaalverzoeken) wordt niet getolereerd en kan juridische gevolgen hebben.
+            Jouw donatie helpt mij mijn missie voort te zetten en meer mensen te bereiken.<br /><br />
+            Donaties zijn volledig vrijblijvend en zonder tegenprestatie. Ze maken het mogelijk om mijn werk onafhankelijk voort te zetten en dragen direct bij aan de dekking van reiskosten, de aanschaf van materialen en investeringen in diepgravend onderzoek.<br /><br />
+            Met jouw steun maak je niet alleen mijn inzet mogelijk, maar help je ook om verhalen en waarheden te belichten die gehoord móéten worden.
+            En soms… is het gewoon een broodnodig kopje koffie na een lange zittingsdag.
+            Donaties via Tikkie zijn vrijwillig en zonder enige verplichting. Misbruik, zoals pesterijen of laster via betaalverzoeken, wordt niet getolereerd en kan juridische gevolgen hebben.
           </p>
         </div>
 
