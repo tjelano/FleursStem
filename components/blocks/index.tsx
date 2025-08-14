@@ -36,9 +36,12 @@ const componentMap = {
 };
 
 export default function Blocks({ blocks }: { blocks: Block[] }) {
+  // Filter out logo cloud blocks
+  const filteredBlocks = blocks?.filter(block => block._type !== 'logo-cloud-1') || [];
+  
   return (
     <>
-      {blocks?.map((block: any) => {
+      {filteredBlocks.map((block: any) => {
         const Component = componentMap[block._type];
         if (!Component) {
           // Fallback for development/debugging of new component types
